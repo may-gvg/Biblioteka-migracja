@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <div class="container-fluid no-padding">
+        <div class="row">
+            <div class="col-md-12">
+                <hr/>
+                <hr/>
+                <form method="POST" action="/product/">
+                    <table id="example" class="table table-striped table-bordered" style="width:100%;">
+                        <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Quantity</th>
+                            <th>Unit</th>
+                            <th>Price</th>
+                            <th></th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {% for item in items %}
+                            <tr>
+                                <td>{{ item.name }}</td>
+                                <td>{{ item.quantity }}</td>
+                                <td>{{ item.unit }}</td>
+                                <td>{{ item.unit_price }}</td>
+                                <td></td>
+                            </tr>
+                        {% endfor %}
+                        <tr>
+                            {% for field in form if field.widget.input_type != 'hidden' %}
+                                <td>{{ field }}</td>
+                            {% endfor %}
+                            <td><input type="submit" value="Go"></td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </form>
+            </div>
+        </div>
+    </div>
+{% endblock %}
